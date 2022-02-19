@@ -14,8 +14,6 @@ exports.getAllProducts = async (req, res) => {
     queryObject.featured = featured === 'true' ? true : false;
   }
 
-  console.log(queryObject);
-
   const products = await Product.find(queryObject);
   res.status(200).json({ count: products.length, products });
 };
