@@ -18,7 +18,7 @@ const productSchema = new mongoose.Schema(
       type: Number,
       default: 4.5,
       min: 1,
-      max: 10,
+      max: 5,
     },
 
     company: {
