@@ -7,5 +7,6 @@ exports.getAllProductsStatic = async (req, res) => {
 };
 
 exports.getAllProducts = async (req, res) => {
-  res.status(200).json({ message: 'productsroute' });
+  const products = await Product.find(req.query);
+  res.status(200).json({ count: products.length, products });
 };
