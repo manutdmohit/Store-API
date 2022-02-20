@@ -62,7 +62,7 @@ exports.getAllProducts = async (req, res) => {
     });
   }
 
-  console.log(queryObject);
+  // console.log(queryObject);
 
   let result = Product.find(queryObject);
 
