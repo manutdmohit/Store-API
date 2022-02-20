@@ -10,3 +10,13 @@ MONGO_URI=YourConnectionString
   - npm install
   - npm start
 ```
+- For Seeding data to the DataBase
+ ```
+ - Check seeder.js file
+ To import data:
+ node seeder -i 
+ 
+ To destroy data:
+ npm seeder -d
+ 
+ ```
