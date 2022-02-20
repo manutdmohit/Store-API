@@ -7,11 +7,16 @@ exports.getAllProductsStatic = async (req, res) => {
   //   // name: { $regex: search, $options: 'i' },
   // }).sort('-price name');
 
-  const products = await Product.find({})
-    .sort('name')
-    .select('name price')
-    .limit(4)
-    .skip(1);
+  // const products = await Product.find({})
+  //   .sort('name')
+  //   .select('name price')
+  //   .limit(4)
+  //   .skip(1);
+
+  const products = await Product.find({ price: { $gt: 30 } })
+    .sort('price')
+    .select('name price');
+
   res.status(200).json({ count: products.length, products });
 };
 
