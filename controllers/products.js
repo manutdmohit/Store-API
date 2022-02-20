@@ -11,7 +11,7 @@ exports.getAllProductsStatic = async (req, res) => {
 };
 
 exports.getAllProducts = async (req, res) => {
-  const { featured, company, name } = req.query;
+  const { featured, company, name, sort } = req.query;
   const queryObject = {};
 
   if (featured) {
@@ -26,8 +26,17 @@ exports.getAllProducts = async (req, res) => {
     queryObject.name = { $regex: name, $options: 'i' };
   }
 
-  console.log(queryObject);
+  // console.log(queryObject);
 
-  const products = await Product.find(queryObject).sort();
+  let result = Product.find(queryObject);
+  if (sort) {
+    const sortList = sort.split(',').join(' ');
+    result = result.sort(sortList);
+  } else {
+    result = result.sort('createdAt');
+  }
+
+  const products = await result;
+
   res.status(200).json({ count: products.length, products });
 };
